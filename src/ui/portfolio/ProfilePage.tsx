@@ -6,7 +6,6 @@ const profile = {
   name: "韩灏",
   romanName: "HAN HAO",
   role: "Product Design Engineer",
-  experience: "9年全链路体验设计经验",
   email: "m13131676216@163.com",
   phone: "13131676216",
   education: "渭南师范 — 数字媒体艺术（本科）",
@@ -310,20 +309,6 @@ const profilePageCss = `
     line-height: 1.1;
   }
 
-  .profile-experience {
-    display: inline;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    color: rgba(150, 190, 205, 0.68);
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    line-height: 1.4;
-    white-space: nowrap;
-  }
-
   .profile-summary {
     max-width: 620px;
     margin: 22px 0 0;
@@ -577,7 +562,6 @@ export function ProfilePage() {
 
             <div className="profile-identity">
               <span className="profile-role">{profile.role}</span>
-              <span className="profile-experience">{profile.experience}</span>
             </div>
 
             <p className="profile-summary">
