@@ -65,6 +65,6 @@ export function useFollowCamera({
     if (!enabled || !controlsRef.current || !characterRef?.current) return;
     
     const { x, y, z } = characterRef.current.position;
-    controlsRef.current.moveTo(x, y + 1.0, z, true);
+    controlsRef.current.moveTo(x + CAMERA_LOOKAT.x, y + CAMERA_LOOKAT.y, z + CAMERA_LOOKAT.z, true);
   });
 }

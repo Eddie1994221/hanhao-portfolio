@@ -4,6 +4,7 @@ import AudioButton from "./AudioButton";
 import { SideBar } from "./SideBar";
 import { TouchJoystick } from "../core/input/TouchJoystick";
 import { input } from "../core/input/controls";
+import { ProjectActionBar } from "./portfolio/ProjectActionBar";
 
 export function UI() {
     const isMobile = useGameStore((state) => state.isMobile);
@@ -32,6 +33,7 @@ export function UI() {
             }}>
                 <AudioButton />
                 <SideBar />
+                <ProjectActionBar />
 
                 {isMobile &&
                     <TouchJoystick

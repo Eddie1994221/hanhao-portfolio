@@ -122,8 +122,8 @@ export function LoadingScreen() {
 
     const entryContainerStyle: React.CSSProperties = {
         opacity: 1,
-        maxWidth: isMobileLandscape ? '80%' : (isMobile ? '100%' : '600px'),
-        padding: isMobileLandscape ? '20px' : '40px',
+        maxWidth: isMobileLandscape ? '88%' : (isMobile ? '100%' : '920px'),
+        padding: isMobileLandscape ? '20px' : '44px',
         animation: 'fadeIn 2s ease',
         display: 'flex',
         // SWITCH LAYOUT: Row for landscape, Column for portrait
@@ -135,16 +135,27 @@ export function LoadingScreen() {
     };
 
     const playButtonStyle: React.CSSProperties = {
-        color: gpuError ? '#ff4444' : 'white',
-        backgroundColor: 'transparent',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: isMobile ? '18px' : '22px',
+        padding: 0,
+        color: gpuError ? 'rgba(245, 248, 255, 0.58)' : (isReadyToStart ? '#ffffff' : 'rgba(220, 226, 232, 0.72)'),
+        background: 'none',
         border: 'none',
-        letterSpacing: '3px',
-        transition: 'all 0.5s ease',
-        transform: 'scale(1)',
+        outline: 'none',
+        borderRadius: 0,
+        fontSize: '13px',
+        letterSpacing: isReadyToStart ? '0.24em' : '3px',
+        fontWeight: isReadyToStart ? 600 : 500,
+        transition: 'opacity 240ms ease, color 240ms ease',
         cursor: gpuError ? 'default' : (isReadyToStart ? 'pointer' : 'wait'),
         opacity: gpuError ? 0.8 : 1,
         whiteSpace: 'nowrap',
-        animation: isReadyToStart ? 'breathe 2s infinite ease-in-out' : 'none',
+        animation: 'none',
+        boxShadow: 'none',
+        backdropFilter: 'none',
+        WebkitBackdropFilter: 'none',
     };
 
     return (
@@ -161,30 +172,49 @@ export function LoadingScreen() {
                 }}>
                     {/* Title */}
                     <div style={{
-                        fontSize: '1rem', fontWeight: 'bold',
-                        letterSpacing: isMobile ? '0.3rem' : '0.5rem',
-                        marginBottom: isMobileLandscape ? '1rem' : '2rem',
+                        fontSize: isMobile ? 'clamp(30px, 8vw, 40px)' : 'clamp(30px, 4vw, 48px)',
+                        fontWeight: 700,
+                        letterSpacing: isMobile ? '0.22em' : '0.27em',
+                        lineHeight: 1.08,
+                        color: 'rgba(245, 248, 255, 0.96)',
+                        textShadow: '0 0 18px rgba(255,255,255,0.12)',
+                        marginBottom: isMobileLandscape ? '0.7rem' : '1.25rem',
                     }}>
-                        FALSE EARTH
+                        HAN HAO PORTFOLIO
+                    </div>
+
+                    {/* Subtitle */}
+                    <div style={{
+                        fontSize: isMobileLandscape ? 'clamp(12px, 1.2vw, 14px)' : 'clamp(13px, 1.4vw, 18px)',
+                        fontWeight: 500,
+                        letterSpacing: isMobile ? '0.18em' : '0.28em',
+                        color: 'rgba(210, 220, 230, 0.66)',
+                        marginBottom: isMobileLandscape ? '1.1rem' : '2.45rem',
+                        textTransform: 'uppercase',
+                    }}>
+                        Product Design Engineer
                     </div>
 
                     {/* Intro Text */}
                     <div style={{
-                        textAlign: 'left',
+                        textAlign: isMobileLandscape ? 'left' : 'center',
                         display: 'inline-block',
-                        lineHeight: '1.5', color: '#ccc',
-                        marginBottom: isMobileLandscape ? '0' : '3rem',
-                        fontSize: isMobileLandscape ? '0.75rem' : 'inherit',
+                        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                        lineHeight: 1.75,
+                        color: 'rgba(225, 230, 238, 0.82)',
+                        letterSpacing: '0.025em',
+                        fontWeight: 400,
+                        marginBottom: isMobileLandscape ? '0' : '3.45rem',
+                        fontSize: isMobileLandscape ? 'clamp(12px, 1vw, 14px)' : 'clamp(15px, 1.25vw, 20px)',
+                        maxWidth: '820px',
                     }}>
-                        <p>
-                            After drifting beyond the edge of space, the journey reaches ground again.
-                            A surface extends in every direction, without a visible boundary.
-                            No matter how far it continues, the horizon does not draw closer.
+                        <p style={{ display: 'none' }}>
+                            A portfolio journey across AI products, mobility interfaces, digital commerce,
+                            and visual systems — shaped by product thinking, interaction design, and design engineering.
                         </p>
-
-                        <p>
-                            With each step, something descends and alters the surface, leaving traces behind.
-                            The drift does not end here; it continues in another form.
+                        <p style={{ margin: 0 }}>
+                            A portfolio journey across AI products, mobility interfaces, digital commerce,
+                            and visual systems {"\u2014"} shaped by product thinking, interaction design, and design engineering.
                         </p>
 {/* 
                         {!gpuError && (
@@ -210,13 +240,29 @@ export function LoadingScreen() {
                             onClick={handleStart}
                             disabled={!isReadyToStart || !!gpuError}
                             style={playButtonStyle}
-                            onMouseEnter={(e) => (isReadyToStart && !gpuError) && (e.currentTarget.style.transform = 'scale(1.02)')}
-                            onMouseLeave={(e) => (isReadyToStart && !gpuError) && (e.currentTarget.style.transform = 'scale(1)')}
+                            onMouseEnter={(e) => {
+                                if (!isReadyToStart || gpuError) return;
+                                e.currentTarget.style.opacity = '0.86';
+                                e.currentTarget.querySelectorAll<HTMLElement>('[data-start-line]').forEach((line) => {
+                                    line.style.background = 'rgba(255,255,255,0.78)';
+                                });
+                            }}
+                            onMouseLeave={(e) => {
+                                if (!isReadyToStart || gpuError) return;
+                                e.currentTarget.style.opacity = '1';
+                                e.currentTarget.querySelectorAll<HTMLElement>('[data-start-line]').forEach((line) => {
+                                    line.style.background = 'rgba(255,255,255,0.55)';
+                                });
+                            }}
                         >
                             {gpuError ? (
                                 <span style={{ letterSpacing: '2px' }}>SYSTEM INCOMPATIBLE</span>
                             ) : isReadyToStart ? (
-                                "[ START ]"
+                                <>
+                                    <span data-start-line aria-hidden="true" style={{ width: isMobile ? '28px' : '34px', height: '1px', background: 'rgba(255,255,255,0.55)', transition: 'background 240ms ease' }} />
+                                    <span>START JOURNEY</span>
+                                    <span data-start-line aria-hidden="true" style={{ width: isMobile ? '28px' : '34px', height: '1px', background: 'rgba(255,255,255,0.55)', transition: 'background 240ms ease' }} />
+                                </>
                             ) : (
                                 <span>
                                     {active ? "LOADING" : "CALIBRATING"}... {displayProgress}%
@@ -234,8 +280,8 @@ export function LoadingScreen() {
 
                     {/* Bottom Area: Controls */}
                     <div style={{
-                        marginTop: isMobileLandscape ? '15px' : '40px',
-                        color: '#ccc', opacity: 0.8, animation: 'fadeIn 3s ease',
+                        marginTop: isMobileLandscape ? '15px' : '44px',
+                        color: '#ccc', opacity: 0.46, animation: 'fadeIn 3s ease',
                         userSelect: 'none', display: 'flex', justifyContent: 'center', gap: '24px',
                         flexDirection: 'row',
                     }}>

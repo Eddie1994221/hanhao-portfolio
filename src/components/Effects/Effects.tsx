@@ -8,16 +8,23 @@ import { dof } from "three/addons/tsl/display/DepthOfFieldNode.js";
 import { smaa } from "three/addons/tsl/display/SMAANode.js";
 
 import { useGameStore, CameraMode } from "../../core/store/gameStore";
+import { usePortfolioStore } from "../../core/store/portfolioStore";
+import { projects } from "../../data/projects";
 import { useEffectsControls } from "./useEffectsControls";
 import { BeamSceneContext } from "../../app/App";
 import { useContext } from "react";
+
+const PROJECT_PANEL_FOCUS_HEIGHT = 2.9;
+const PROJECT_FOCUS_BOKEH_MULTIPLIER = 0.46;
 
 export default function Effects() {
   const { isHighQuality, cameraMode, bloom: bloomCfg, dof: dofCfg, toneMapping: tmCfg, smaa: smaaEnabled } = useEffectsControls();
 
   const characterRef = useGameStore((state) => state.characterRef);
+  const focusedProjectId = usePortfolioStore((state) => state.focusedProjectId);
   const { gl, scene, camera } = useThree();
   const beamScene = useContext(BeamSceneContext);
+  const dofEnabled = isHighQuality && dofCfg.enabled;
 
   const postProcessingRef = useRef<THREE.PostProcessing | null>(null);
 
@@ -31,7 +38,15 @@ export default function Effects() {
     bloomRad: uniform(0),
   });
 
-  const vecCache = useMemo(() => ({ cam: new THREE.Vector3(), char: new THREE.Vector3() }), []);
+  const focusedProjectLookup = useMemo(
+    () => new Map(projects.map((project) => [project.id, project])),
+    [],
+  );
+  const vecCache = useMemo(() => ({
+    cam: new THREE.Vector3(),
+    char: new THREE.Vector3(),
+    project: new THREE.Vector3(),
+  }), []);
 
   useEffect(() => {
     uParams.current.bloomThresh.value = bloomCfg.threshold;
@@ -94,7 +109,7 @@ export default function Effects() {
     const toCenter = uvNode.sub(0.5);
     const dist = length(toCenter);
 
-    if (isHighQuality && dofCfg.enabled) {
+    if (dofEnabled) {
       finalNode = dof(
         finalNode,
         sceneDepth,
@@ -138,19 +153,50 @@ export default function Effects() {
     scene,
     camera,
     isHighQuality,
-    dofCfg.enabled,
+    dofEnabled,
     bloomCfg.enabled,
     smaaEnabled,
     tmCfg.enabled,
   ]);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (!postProcessingRef.current) return;
 
-    if (isHighQuality && dofCfg.enabled && dofCfg.autofocus && characterRef?.current) {
+    if (dofEnabled) {
+      const targetBokeh = focusedProjectId
+        ? dofCfg.bokehScale * PROJECT_FOCUS_BOKEH_MULTIPLIER
+        : dofCfg.bokehScale;
+      uParams.current.bokeh.value = THREE.MathUtils.damp(
+        uParams.current.bokeh.value,
+        targetBokeh,
+        6,
+        delta,
+      );
+    }
+
+    if (dofEnabled && (dofCfg.autofocus || focusedProjectId)) {
       camera.getWorldPosition(vecCache.cam);
-      characterRef.current.getWorldPosition(vecCache.char);
-      uParams.current.focusDist.value = vecCache.cam.distanceTo(vecCache.char);
+      const focusedProject = focusedProjectId ? focusedProjectLookup.get(focusedProjectId) : null;
+      let targetFocusDistance: number | null = null;
+
+      if (focusedProject) {
+        vecCache.project.set(
+          focusedProject.position[0],
+          focusedProject.position[1] + PROJECT_PANEL_FOCUS_HEIGHT,
+          focusedProject.position[2],
+        );
+        targetFocusDistance = vecCache.cam.distanceTo(vecCache.project);
+      } else if (dofCfg.autofocus && characterRef?.current) {
+        characterRef.current.getWorldPosition(vecCache.char);
+        targetFocusDistance = vecCache.cam.distanceTo(vecCache.char);
+      }
+
+      if (targetFocusDistance !== null) {
+        const currentFocusDistance = uParams.current.focusDist.value;
+        uParams.current.focusDist.value = currentFocusDistance <= 0.001
+          ? targetFocusDistance
+          : THREE.MathUtils.damp(currentFocusDistance, targetFocusDistance, 8, delta);
+      }
     }
 
     postProcessingRef.current.render();

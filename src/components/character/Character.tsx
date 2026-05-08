@@ -9,7 +9,12 @@ import { useCharacterPhysics } from './hooks/useCharacterPhysics';
 import { useGameStore, CameraMode } from '../../core/store/gameStore';
 import { CharacterAudio, CharacterAudioHandle } from './CharacterAudio';
 
-export const Character = ({ position = [0, 0, 0], scale = 1, visible = true }: CharacterProps) => {
+export const Character = ({
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  scale = 1,
+  visible = true,
+}: CharacterProps) => {
   const groupRef = useRef<Group>(null);
   const audioRef = useRef<CharacterAudioHandle>(null);
 
@@ -70,7 +75,7 @@ export const Character = ({ position = [0, 0, 0], scale = 1, visible = true }: C
   if (!scene) return null;
 
   return (
-    <group ref={groupRef} position={position} scale={scale} visible={visible} dispose={null}>
+    <group ref={groupRef} position={position} rotation={rotation} scale={scale} visible={visible} dispose={null}>
       {scene && <primitive object={scene} />}
 
       <Suspense fallback={null}>

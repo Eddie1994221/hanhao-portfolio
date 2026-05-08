@@ -18,7 +18,7 @@ export function CosmicSystem() {
     lifetimeMax: { value: 5.0, min: 0.5, max: 20.0, step: 0.1 },
     donutMinRadius: { value: 5.0, min: 1.0, max: 30.0, step: 0.5 },
     donutMaxRadius: { value: 15.0, min: 1.0, max: 50.0, step: 0.5 },
-    autoSpawn: { value: true, label: 'Auto Spawn' },
+    autoSpawn: { value: false, label: 'Auto Spawn (Debug)' },
     minSpawnInterval: { value: 2.0, min: 0.1, max: 10.0, step: 0.1, label: 'Min Interval (s)' },
     maxSpawnInterval: { value: 5.0, min: 0.1, max: 10.0, step: 0.1, label: 'Max Interval (s)' },
     speedThreshold: { value: 0.1, min: 0.01, max: 5.0, step: 0.01, label: 'Speed Threshold' },

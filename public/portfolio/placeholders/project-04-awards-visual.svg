@@ -1,0 +1,30 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(620 340) rotate(90) scale(500 430)">
+      <stop stop-color="#e7f3ff" stop-opacity=".32"/>
+      <stop offset=".52" stop-color="#35506d" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#04080d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="600" x2="600" y1="176" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity=".96"/>
+      <stop offset=".5" stop-color="#dcecff" stop-opacity=".76"/>
+      <stop offset="1" stop-color="#88e8ff" stop-opacity=".38"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="11" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#04080d"/>
+  <rect width="1200" height="900" fill="url(#a)"/>
+  <path d="M600 172L742 480H458L600 172Z" stroke="url(#b)" stroke-width="3" filter="url(#g)"/>
+  <path d="M600 252L684 444H516L600 252Z" fill="#dcecff" fill-opacity=".08" stroke="#f4fbff" stroke-opacity=".32"/>
+  <path d="M268 602H932M324 556H876M388 510H812" stroke="#dcecff" stroke-opacity=".14"/>
+  <path d="M238 638C358 586 484 558 600 558C716 558 842 586 962 638" stroke="#f4fbff" stroke-opacity=".18" stroke-width="30" stroke-linecap="round"/>
+  <path d="M294 625C412 596 506 584 600 584C694 584 788 596 906 625" stroke="#061018" stroke-width="21" stroke-linecap="round"/>
+  <path d="M320 620C429 600 515 592 600 592C685 592 771 600 880 620" stroke="#dcecff" stroke-opacity=".72" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="76" y="68" width="1048" height="764" stroke="#e7f3ff" stroke-opacity=".18"/>
+  <path d="M76 162V68H176M1024 68H1124V162M1124 738V832H1024M176 832H76V738" stroke="#e7f3ff" stroke-opacity=".46" stroke-width="2"/>
+  <text x="118" y="746" fill="#f5fbff" font-family="Cousine, Consolas, monospace" font-size="66" font-weight="700" letter-spacing="2">Awards-Visual</text>
+  <text x="122" y="792" fill="#dcecff" fill-opacity=".76" font-family="Cousine, Consolas, monospace" font-size="22" letter-spacing="6">PROJECT 04 / CEREMONIAL LIGHT</text>
+</svg>

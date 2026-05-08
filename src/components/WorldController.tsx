@@ -25,6 +25,7 @@ import Rose from './Rose/Rose';
 import GrassWebGPU from './grass/GrassWebGPU';
 import { Character } from './character';
 import { GrassCullingDebug } from '../debug/GrassCullingDebug';
+import { PortfolioNodes } from './portfolio/PortfolioNodes';
 
 export function WorldController() {
     const setActiveTargets = useGameStore((state) => state.setActiveTargets);
@@ -127,6 +128,8 @@ export function WorldController() {
                 <Terrain />
             </group>
 
+            <PortfolioNodes />
+
             {/* Major components - toggle visibility instead of unmounting */}
             <AsyncCompile id="rose" onReady={setComponentReady} debug={debugMode}>
                 <Rose count={2000} visible={enableRose} />
@@ -139,7 +142,7 @@ export function WorldController() {
 
 
             <AsyncCompile id="character" onReady={setComponentReady} debug={debugMode}>
-                <Character position={[0, 0, 0]} scale={1} visible={enableCharacter} />
+                <Character position={[0, 0, 0]} rotation={[0, 1.28, 0]} scale={1} visible={enableCharacter} />
             </AsyncCompile>
         </Suspense>
     </>

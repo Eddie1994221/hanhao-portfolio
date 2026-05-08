@@ -9,8 +9,8 @@ type Props = {
   boneName?: string;
 };
 
-export const CAMERA_POSITION = new THREE.Vector3(-4, 2, -0.5);
-export const CAMERA_LOOKAT = new THREE.Vector3(0, 1, 0);
+export const CAMERA_POSITION = new THREE.Vector3(-7.2, 3.0, -3.2);
+export const CAMERA_LOOKAT = new THREE.Vector3(0.9, 1.15, 0.45);
 
 export function CameraViewControl({ boneName = 'head' }: Props) {
   const cameraMode = useGameStore((state) => state.cameraMode);

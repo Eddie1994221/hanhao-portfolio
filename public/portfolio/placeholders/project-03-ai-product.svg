@@ -1,0 +1,33 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(610 405) rotate(90) scale(510 520)">
+      <stop stop-color="#9eb5ff" stop-opacity=".34"/>
+      <stop offset=".52" stop-color="#29335f" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#03070c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="185" x2="1018" y1="245" y2="657" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7fbff" stop-opacity=".72"/>
+      <stop offset=".5" stop-color="#c8d7ff"/>
+      <stop offset="1" stop-color="#78f0ff" stop-opacity=".58"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#03070c"/>
+  <rect width="1200" height="900" fill="url(#a)"/>
+  <path d="M192 254H1008V646H192V254Z" stroke="#c8d7ff" stroke-opacity=".18"/>
+  <path d="M600 254V646M192 450H1008" stroke="#c8d7ff" stroke-opacity=".11"/>
+  <circle cx="600" cy="450" r="176" stroke="#eaf2ff" stroke-opacity=".12"/>
+  <circle cx="600" cy="450" r="100" stroke="#eaf2ff" stroke-opacity=".16"/>
+  <path d="M370 540L486 413L585 488L718 337L842 430" stroke="url(#b)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+  <circle cx="486" cy="413" r="9" fill="#eefaff"/>
+  <circle cx="585" cy="488" r="9" fill="#eefaff"/>
+  <circle cx="718" cy="337" r="9" fill="#eefaff"/>
+  <path d="M314 310H457M314 342H398M742 588H886M804 556H886" stroke="#eaf2ff" stroke-opacity=".28" stroke-width="2"/>
+  <rect x="76" y="68" width="1048" height="764" stroke="#eaf2ff" stroke-opacity=".18"/>
+  <path d="M76 162V68H176M1024 68H1124V162M1124 738V832H1024M176 832H76V738" stroke="#eaf2ff" stroke-opacity=".42" stroke-width="2"/>
+  <text x="118" y="746" fill="#f4f8ff" font-family="Cousine, Consolas, monospace" font-size="66" font-weight="700" letter-spacing="2">Ai-Product</text>
+  <text x="122" y="792" fill="#c8d7ff" fill-opacity=".76" font-family="Cousine, Consolas, monospace" font-size="22" letter-spacing="6">PROJECT 03 / INTELLIGENCE WORKFLOW</text>
+</svg>

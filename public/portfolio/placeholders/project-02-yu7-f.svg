@@ -1,0 +1,30 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(415 370) rotate(33) scale(500 380)">
+      <stop stop-color="#70c8ff" stop-opacity=".38"/>
+      <stop offset=".55" stop-color="#123d5d" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#02070d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="222" x2="1000" y1="602" y2="245" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eefaff" stop-opacity=".78"/>
+      <stop offset=".42" stop-color="#9fd8ff"/>
+      <stop offset="1" stop-color="#eefaff" stop-opacity=".5"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#02070d"/>
+  <rect width="1200" height="900" fill="url(#a)"/>
+  <path d="M120 254C252 176 394 168 545 236C710 311 854 304 1080 178" stroke="#dff6ff" stroke-opacity=".12" stroke-width="1.4"/>
+  <path d="M155 635H1050M155 574H1050M155 513H1050" stroke="#8dd8ff" stroke-opacity=".08"/>
+  <path d="M250 610L360 484H498L646 360H845L998 250" stroke="url(#b)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+  <path d="M275 620C420 580 588 565 830 592" stroke="#dff6ff" stroke-opacity=".16" stroke-width="38" stroke-linecap="round"/>
+  <path d="M315 608C456 582 605 579 794 598" stroke="#05111a" stroke-width="28" stroke-linecap="round"/>
+  <path d="M334 603C468 588 610 588 775 602" stroke="#9fd8ff" stroke-opacity=".78" stroke-width="3" stroke-linecap="round"/>
+  <rect x="76" y="68" width="1048" height="764" stroke="#dff6ff" stroke-opacity=".18"/>
+  <path d="M76 162V68H176M1024 68H1124V162M1124 738V832H1024M176 832H76V738" stroke="#dff6ff" stroke-opacity=".42" stroke-width="2"/>
+  <text x="118" y="746" fill="#effbff" font-family="Cousine, Consolas, monospace" font-size="66" font-weight="700" letter-spacing="2">YU7-F</text>
+  <text x="122" y="792" fill="#9fd8ff" fill-opacity=".72" font-family="Cousine, Consolas, monospace" font-size="22" letter-spacing="6">PROJECT 02 / MOBILITY INTERFACE</text>
+</svg>

@@ -21,6 +21,8 @@ import { AudioLoader } from 'three';
 import { KTX2Preloader } from "@core";
 import { ROSE_TEXTURES } from "../components/Rose/core/config";
 import { BODY_TEXTURE_PATHS, DETAIL_TEXTURE_PATHS, MODEL_PATHS } from '../components/character/config';
+import { ProjectDetailPage } from "../ui/portfolio/ProjectDetailPage";
+import { ProfilePage } from "../ui/portfolio/ProfilePage";
 
 
 useLoader.preload(AudioLoader,
@@ -40,6 +42,30 @@ preloadVATAssets('/vat/RoseLowPoly_meta.json');
 export const BeamSceneContext = createContext<THREE.Scene | null>(null);
 
 export default function App() {
+    const pathname = window.location.pathname;
+    const projectSlug = getProjectSlug(pathname);
+
+    if (isProfilePath(pathname)) {
+        return <ProfilePage />;
+    }
+
+    if (projectSlug) {
+        return <ProjectDetailPage slug={projectSlug} />;
+    }
+
+    return <JourneyApp />;
+}
+
+function getProjectSlug(pathname: string) {
+    const match = pathname.match(/^\/projects\/([^/]+)\/?$/);
+    return match?.[1] ?? null;
+}
+
+function isProfilePath(pathname: string) {
+    return /^\/profile\/?$/.test(pathname);
+}
+
+function JourneyApp() {
     const beamScene = useMemo(() => new THREE.Scene(), []);
     const [dpr, setDpr] = useState(1.5);
 

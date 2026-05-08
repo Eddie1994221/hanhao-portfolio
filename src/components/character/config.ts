@@ -48,6 +48,7 @@ export const MODEL_PATHS = [
 
 export interface CharacterProps {
   position?: [number, number, number];
+  rotation?: [number, number, number];
   scale?: number;
   visible?: boolean;
 }

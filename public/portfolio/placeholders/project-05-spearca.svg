@@ -1,0 +1,31 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(790 425) rotate(141) scale(540 430)">
+      <stop stop-color="#6fffe8" stop-opacity=".3"/>
+      <stop offset=".5" stop-color="#104f56" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#03090b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="272" x2="890" y1="618" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f1fffd" stop-opacity=".72"/>
+      <stop offset=".5" stop-color="#a7f0e6"/>
+      <stop offset="1" stop-color="#ebffff" stop-opacity=".56"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#03090b"/>
+  <rect width="1200" height="900" fill="url(#a)"/>
+  <path d="M270 625L600 248L932 625H270Z" stroke="url(#b)" stroke-width="3" stroke-linejoin="round" filter="url(#g)"/>
+  <path d="M360 590L600 318L840 590H360Z" stroke="#f1fffd" stroke-opacity=".18"/>
+  <path d="M600 248V590M402 625L600 248L798 625" stroke="#a7f0e6" stroke-opacity=".14"/>
+  <path d="M165 372H430M770 372H1035M228 443H356M844 443H972" stroke="#f1fffd" stroke-opacity=".2" stroke-width="2"/>
+  <circle cx="600" cy="248" r="10" fill="#f1fffd"/>
+  <circle cx="270" cy="625" r="7" fill="#f1fffd"/>
+  <circle cx="932" cy="625" r="7" fill="#f1fffd"/>
+  <rect x="76" y="68" width="1048" height="764" stroke="#e9fffb" stroke-opacity=".18"/>
+  <path d="M76 162V68H176M1024 68H1124V162M1124 738V832H1024M176 832H76V738" stroke="#e9fffb" stroke-opacity=".44" stroke-width="2"/>
+  <text x="118" y="746" fill="#f1fffd" font-family="Cousine, Consolas, monospace" font-size="66" font-weight="700" letter-spacing="2">Spearca</text>
+  <text x="122" y="792" fill="#a7f0e6" fill-opacity=".76" font-family="Cousine, Consolas, monospace" font-size="22" letter-spacing="6">PROJECT 05 / SIGNAL IDENTITY</text>
+</svg>

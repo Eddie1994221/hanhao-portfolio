@@ -4,6 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ThreeSixtyIcon from '@mui/icons-material/ThreeSixty';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export function SideBar() {
     const isMobile = useGameStore((state) => state.isMobile);
@@ -63,6 +64,10 @@ export function SideBar() {
 
     const qualityTooltip = quality === 'high' ? 'Quality' : 'Performance';
 
+    const openProfile = () => {
+        window.location.href = '/profile';
+    };
+
 
     return (
         <div style={{
@@ -79,6 +84,12 @@ export function SideBar() {
             <Tooltip title={ qualityTooltip } placement="left">
                 <IconButton sx={btnStyle} onClick={toggleQuality}>
                     <AutoAwesomeIcon sx={qualityIconStyle} />
+                </IconButton>
+            </Tooltip>
+
+            <Tooltip title="Profile" placement="left">
+                <IconButton sx={btnStyle} onClick={openProfile} aria-label="Open profile">
+                    <AccountCircleIcon sx={iconBaseStyle} />
                 </IconButton>
             </Tooltip>
 

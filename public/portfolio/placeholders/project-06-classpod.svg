@@ -1,0 +1,30 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(470 420) rotate(36) scale(530 430)">
+      <stop stop-color="#b8ccff" stop-opacity=".32"/>
+      <stop offset=".55" stop-color="#253b6d" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#03070e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="250" x2="940" y1="255" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5f9ff" stop-opacity=".78"/>
+      <stop offset=".48" stop-color="#bfd3ff"/>
+      <stop offset="1" stop-color="#87f4ff" stop-opacity=".45"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#03070e"/>
+  <rect width="1200" height="900" fill="url(#a)"/>
+  <rect x="265" y="236" width="670" height="378" stroke="url(#b)" stroke-width="3" filter="url(#g)"/>
+  <path d="M322 320H500M322 372H648M322 424H570M322 476H700" stroke="#f5f9ff" stroke-opacity=".28" stroke-width="3"/>
+  <path d="M780 302L865 370L780 438L695 370L780 302Z" fill="#bfd3ff" fill-opacity=".1" stroke="#f5f9ff" stroke-opacity=".34"/>
+  <path d="M720 520H870M750 552H840" stroke="#87f4ff" stroke-opacity=".38" stroke-width="3"/>
+  <path d="M190 662C324 612 467 589 600 589C733 589 876 612 1010 662" stroke="#f5f9ff" stroke-opacity=".15" stroke-width="32" stroke-linecap="round"/>
+  <path d="M248 648C376 622 488 610 600 610C712 610 824 622 952 648" stroke="#06101b" stroke-width="23" stroke-linecap="round"/>
+  <rect x="76" y="68" width="1048" height="764" stroke="#edf4ff" stroke-opacity=".18"/>
+  <path d="M76 162V68H176M1024 68H1124V162M1124 738V832H1024M176 832H76V738" stroke="#edf4ff" stroke-opacity=".44" stroke-width="2"/>
+  <text x="118" y="746" fill="#f5f9ff" font-family="Cousine, Consolas, monospace" font-size="66" font-weight="700" letter-spacing="2">Classpod</text>
+  <text x="122" y="792" fill="#bfd3ff" fill-opacity=".76" font-family="Cousine, Consolas, monospace" font-size="22" letter-spacing="6">PROJECT 06 / LEARNING SURFACE</text>
+</svg>
