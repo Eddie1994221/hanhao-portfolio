@@ -23,6 +23,10 @@ import { ROSE_TEXTURES } from "../components/Rose/core/config";
 import { BODY_TEXTURE_PATHS, DETAIL_TEXTURE_PATHS, MODEL_PATHS } from '../components/character/config';
 import { ProjectDetailPage } from "../ui/portfolio/ProjectDetailPage";
 import { ProfilePage } from "../ui/portfolio/ProfilePage";
+import { ArchiveCapsulePage } from "../experiments/archive-capsule/ArchiveCapsulePage";
+import { DigitalMiragePage } from "../experiments/digital-mirage/DigitalMiragePage";
+import { ExperimentsIndex } from "../experiments/ExperimentsIndex";
+import { SignalFieldPage } from "../experiments/signal-field/SignalFieldPage";
 
 
 useLoader.preload(AudioLoader,
@@ -45,6 +49,22 @@ export default function App() {
     const pathname = window.location.pathname;
     const projectSlug = getProjectSlug(pathname);
 
+    if (isExperimentsIndexPath(pathname)) {
+        return <ExperimentsIndex />;
+    }
+
+    if (isSignalFieldPath(pathname)) {
+        return <SignalFieldPage />;
+    }
+
+    if (isArchiveCapsulePath(pathname)) {
+        return <ArchiveCapsulePage />;
+    }
+
+    if (isDigitalMiragePath(pathname)) {
+        return <DigitalMiragePage />;
+    }
+
     if (isProfilePath(pathname)) {
         return <ProfilePage />;
     }
@@ -63,6 +83,22 @@ function getProjectSlug(pathname: string) {
 
 function isProfilePath(pathname: string) {
     return /^\/profile\/?$/.test(pathname);
+}
+
+function isExperimentsIndexPath(pathname: string) {
+    return /^\/experiments\/?$/.test(pathname);
+}
+
+function isSignalFieldPath(pathname: string) {
+    return /^\/signal-field\/?$/.test(pathname);
+}
+
+function isArchiveCapsulePath(pathname: string) {
+    return /^\/archive-capsule\/?$/.test(pathname);
+}
+
+function isDigitalMiragePath(pathname: string) {
+    return /^\/digital-mirage\/?$/.test(pathname);
 }
 
 function JourneyApp() {
