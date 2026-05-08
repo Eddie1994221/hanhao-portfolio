@@ -119,6 +119,9 @@ export function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
     );
   }
 
+  const images = Array.isArray(project.images) ? project.images : [];
+  const imageFolder = project.imageFolder || "";
+
   return (
     <main style={pageStyle}>
       <style>{detailPageCss}</style>
@@ -127,12 +130,12 @@ export function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         <h1 style={titleStyle}>{project.title}</h1>
       </header>
 
-      {project.images.length > 0 ? (
+      {images.length > 0 ? (
         <section style={imageListStyle} aria-label={`${project.title} project images`}>
-          {project.images.map((image, index) => (
+          {images.map((image, index) => (
             <img
               key={image}
-              src={`${project.imageFolder}/${image}`}
+              src={`${imageFolder}/${image}`}
               alt={`${project.title} case image ${index + 1}`}
               loading="lazy"
               decoding="async"

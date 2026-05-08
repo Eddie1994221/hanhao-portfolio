@@ -1,6 +1,22 @@
 {
   "rewrites": [
     {
+      "source": "/projects/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/projects/:slug/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/projects/textures/:path*",
+      "destination": "/textures/:path*"
+    },
+    {
+      "source": "/projects/:slug/textures/:path*",
+      "destination": "/textures/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
