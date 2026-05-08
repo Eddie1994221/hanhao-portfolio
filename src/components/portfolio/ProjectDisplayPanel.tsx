@@ -220,6 +220,9 @@ export function ProjectDisplayPanel({
 
   const handlePanelClick = useCallback((event: ThreeEvent<MouseEvent>) => {
     stopPanelPropagation(event);
+    if (document.pointerLockElement) {
+      document.exitPointerLock();
+    }
     window.location.href = project.link;
   }, [project.link, stopPanelPropagation]);
 

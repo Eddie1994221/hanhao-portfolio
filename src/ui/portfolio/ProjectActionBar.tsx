@@ -26,7 +26,14 @@ export function ProjectActionBar() {
       <button
         type="button"
         aria-label={`Enter ${project.title}`}
-        onClick={() => {
+        onPointerDown={(event) => {
+          event.stopPropagation();
+        }}
+        onClick={(event) => {
+          event.stopPropagation();
+          if (document.pointerLockElement) {
+            document.exitPointerLock();
+          }
           window.location.href = project.link;
         }}
         style={{

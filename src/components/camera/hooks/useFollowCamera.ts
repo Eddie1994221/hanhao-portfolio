@@ -29,32 +29,12 @@ export function useFollowCamera({
     return () => document.removeEventListener('mousemove', onMove);
   }, [enabled, controlsRef]);
 
-  // Handle Pointer Lock
+  // Do not request pointer lock automatically; portfolio UI must remain clickable.
   useEffect(() => {
     if (!enabled) return;
     const canvas = gl.domElement;
 
-    const requestLock = async () => {
-      // Only request if not already locked to avoid errors
-      if (document.pointerLockElement !== canvas) {
-        try {
-          await canvas.requestPointerLock();
-        } catch (e) {
-          console.warn('Pointer lock denied:', e);
-        }
-      }
-    };
-
-    // Auto-lock on click
-    const handleClick = () => requestLock();
-    canvas.addEventListener('click', handleClick);
-
-    // Initial lock attempt
-    requestLock();
-
     return () => {
-      canvas.removeEventListener('click', handleClick);
-      // Only exit if we are the one holding the lock
       if (document.pointerLockElement === canvas) {
         document.exitPointerLock();
       }

@@ -311,17 +311,16 @@ const profilePageCss = `
   }
 
   .profile-experience {
-    min-height: 25px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 11px;
-    border: 1px solid rgba(130, 190, 215, 0.16);
-    border-radius: 999px;
-    background: rgba(80, 140, 170, 0.055);
-    color: rgba(145, 205, 226, 0.68);
-    font-size: 12px;
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: rgba(150, 190, 205, 0.68);
+    font-size: 12.5px;
     font-weight: 600;
-    line-height: 1;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
     white-space: nowrap;
   }
 

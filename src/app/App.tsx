@@ -44,8 +44,15 @@ export const BeamSceneContext = createContext<THREE.Scene | null>(null);
 export default function App() {
     const pathname = window.location.pathname;
     const projectSlug = getProjectSlug(pathname);
+    const isProfile = isProfilePath(pathname);
 
-    if (isProfilePath(pathname)) {
+    useEffect(() => {
+        if ((isProfile || projectSlug) && document.pointerLockElement) {
+            document.exitPointerLock();
+        }
+    }, [isProfile, projectSlug]);
+
+    if (isProfile) {
         return <ProfilePage />;
     }
 

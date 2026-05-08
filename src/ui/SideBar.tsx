@@ -1,4 +1,5 @@
 import { IconButton, Tooltip } from '@mui/material';
+import type { MouseEvent } from 'react';
 import { CameraMode, useGameStore } from '../core/store/gameStore';
 import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -15,7 +16,8 @@ export function SideBar() {
     const quality = useGameStore((state) => state.quality); 
     const toggleQuality = useGameStore((state) => state.toggleQuality); 
 
-    const cycleCameraMode = () => {
+    const cycleCameraMode = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
         setCameraMode((cameraMode + 1) % 3);
     };
 
@@ -64,7 +66,16 @@ export function SideBar() {
 
     const qualityTooltip = quality === 'high' ? 'Quality' : 'Performance';
 
-    const openProfile = () => {
+    const toggleQualityFromUi = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        toggleQuality();
+    };
+
+    const openProfile = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        if (document.pointerLockElement) {
+            document.exitPointerLock();
+        }
         window.location.href = '/profile';
     };
 
@@ -82,19 +93,19 @@ export function SideBar() {
         }}>
             
             <Tooltip title={ qualityTooltip } placement="left">
-                <IconButton sx={btnStyle} onClick={toggleQuality}>
+                <IconButton sx={btnStyle} onPointerDown={(event) => event.stopPropagation()} onClick={toggleQualityFromUi}>
                     <AutoAwesomeIcon sx={qualityIconStyle} />
                 </IconButton>
             </Tooltip>
 
             <Tooltip title="Profile" placement="left">
-                <IconButton sx={btnStyle} onClick={openProfile} aria-label="Open profile">
+                <IconButton sx={btnStyle} onPointerDown={(event) => event.stopPropagation()} onClick={openProfile} aria-label="Open profile">
                     <AccountCircleIcon sx={iconBaseStyle} />
                 </IconButton>
             </Tooltip>
 
             <Tooltip title={currentCamera.title} placement="left">
-                <IconButton sx={btnStyle} onClick={cycleCameraMode}>
+                <IconButton sx={btnStyle} onPointerDown={(event) => event.stopPropagation()} onClick={cycleCameraMode}>
                     {currentCamera.icon}
                 </IconButton>
             </Tooltip>
